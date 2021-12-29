@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+   <style>
+    html {
+      border: 0;
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      scroll-behavior: smooth;
+    }
+    header h1 {
+      float: left;
+      margin-top: 2%;
+      padding-left: 5%;
+      font-weight: 400;
+    }
+    .navigation {
+      display: flex;
+      float: right;
+      padding-right: 3rem;
+    }
+    li {
+      list-style: none;
+      padding: 0 2rem;
+      margin-top: 1rem;
+      font-size: 1.5rem;
+    }
+    a {
+        text-decoration: none;
+        /* transition: all 0.2s; */
+      }
+      a:link,a:visited {
+        color: black;
+      }
+      a:hover,a:active {
+        color: red;
+      }
+    .showcase {
+      width: 95%;
+      height: 90vh;
+      margin: auto;
+      overflow: hidden;
+    }
+    .article {
+      display: flex;
+      margin: 1rem;
+    }
+    .container {
+     
+      text-align: center;
+      padding: 1.5rem;
+    }
+    h2 {
+      font-weight: 500;
+    }
+    p {
+      font-size: 1.5rem;
+      padding-left: 2rem;
+    }
+    footer {
+      text-align: center;
+      font-size: 2rem;
+      color: white;
+      background-color: black;
+      padding: 1.5rem;
+    }
+  </style> 
+</head>
+<body>
+  <header>
+          <h1>DEV 101</h1>
+          <ul class="navigation">
+            <li><a href="#article">HTML5</a></li>
+            <li><a href="#article">CSS3</a></li>
+            <li><a href="#article">JavaScript</a></li>
+          </ul>
+  </header>
+  <div class="showcase">
+    <img src="lap.jpeg" alt="" />
+  </div>
+  <div class="article" id="article">
+    <div class="container">
+      <div class="image">
+        <img src="html.png" alt="img" />
+      </div>
+      <div class="discription">
+        <h2>HTML5</h2>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui dolorem
+          minima totam, quidem accusantium debitis eveniet consectetur ad dicta
+          ipsa, accusamus, cupiditate voluptates odit a ea veniam quae quia.
+        </p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="image">
+        <img src="css.png" alt="img" />
+      </div>
+      <div class="discription">
+        <h2>CSS3</h2>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui dolorem
+          minima totam, quidem accusantium debitis eveniet consectetur ad dicta
+          ipsa, accusamus, cupiditate voluptates odit a ea veniam quae quia.
+        </p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="image">
+        <img src="icon.png" alt="img" />
+      </div>
+      <div class="discription">
+        <h2>JavaScript</h2>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui dolorem
+          minima totam, quidem accusantium debitis eveniet consectetur ad dicta
+          ipsa, accusamus, cupiditate voluptates odit a ea veniam quae quia.
+        </p>
+      </div>
+    </div>
+  </div>
+  <footer id="footer">
+    &copy; Pepcoding  2K19
+  </footer>
+</body>
+</html>
