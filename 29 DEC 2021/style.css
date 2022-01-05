@@ -71,3 +71,16 @@ footer{
 
 }
 
+a{
+       text-decoration:none;
+
+
+}
+
+a:hover{
+       color: red;
+}
+
+
+
+
