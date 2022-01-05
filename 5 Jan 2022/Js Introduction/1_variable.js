@@ -75,11 +75,11 @@
 
 //using let keyword
 
-// let b = 'hello'
-// console.log(b) // prints hello
+let b = 'hello'
+console.log(b) // prints hello
 
-// let b = 'Bye' // Error : b is already been declared(Redeclartion Error)
-// console.log(b)
+ b = 2 // Error : b is already been declared(Redeclartion Error)
+console.log(b)
 
 
 
@@ -118,20 +118,20 @@
 // var is function scoped
 
 
-if(10%2==0){
-       let a = 'Number is divided by 2'
-       console.log('This is Block code' + a)
-}
+// if(10%2==0){
+//        let a = 'Number is divided by 2'
+//        console.log('This is Block code' + a)
+// }
 
-console.log('This is out of block code'+ a)
+// console.log('This is out of block code'+ a)
 
 
 
-//const keyword
+const keyword
 
 const a = 2
 
-const a = 6; // no redcalertion allowed
+const a = 6; // no redeclaration allowed
 
 a = 'hello' // no Reassigning Allowed
 
