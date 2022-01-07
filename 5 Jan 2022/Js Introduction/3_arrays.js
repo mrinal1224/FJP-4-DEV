@@ -84,6 +84,8 @@ let matrix = [
        [7 , 8 , 9],
 ]
 
+console.log(matrix)
+
 
 console.log(matrix[1][2])
 
