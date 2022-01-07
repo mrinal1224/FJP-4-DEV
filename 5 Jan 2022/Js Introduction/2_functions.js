@@ -3,12 +3,10 @@
 
 // // // function function_name(){}
 // // // function defination
-// // // function sayHi(){
-// // //   console.log('Hi')
-// // // } /// function body
 
 
-// // // sayHi() // function calling or invokation
+
+// 2// function calling or invokation
 
 
 
@@ -37,10 +35,11 @@
 
 
 // let add = function(a,b){
-//        console.log(a+b)
+//        return a+b
 // }
 
-// add(2,3)
+// let sum = add(2,3)
+// console.log(sum)
 
 
 // sayHi()
@@ -59,9 +58,32 @@
 //IIFE (Immediately invoked function Expression)
 
 
-let substract = (function(a ,b){
-       console.log(a-b)
-})(30 , 20)
+
+
+// function multiply(a , b){
+//        console.log(a*b)
+// }
+
+// multiply(2 , 3)
+
+
+// multiply(5 , 6)
+
+// multiply(10 , 2)
+
+
+
+//IIFE
+let multiplyIIFE = (function(a,b){
+       console.log(a*b) 
+})(20 , 10)
+
+
+
+
+
+
+
 
 
 
