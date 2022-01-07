@@ -52,6 +52,20 @@
 
 // Uppercase Method and Lowercase
 
+let text1 = 'Hello World'
+
+let text2 = text1.toLowerCase()
+
+console.log(text2)
+
+
+let text3 = 'Hello World'
+
+let text4 = text3.toUpperCase
+
+console.log(text4)
+
+
 
 
 
@@ -66,20 +80,14 @@
 
 
 
-
-
-
 //Trim method is used to remove all the whiteSpaces
 
-let text = 'Hello World'
+let text = '                  Hello World              '
 
 let trimmedText = text.trim()
 
 console.log(text)
 console.log(trimmedText)
-
-
-
 
 
 
