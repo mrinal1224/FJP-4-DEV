@@ -29,9 +29,9 @@
 
 // // functions are treated as first class citizen in JavaScript
 
-// let sayHi = function(){ // anonymous function
-//      console.log('Hi')
-// } // function expression
+let sayHi = function(){ // anonymous function
+     console.log('Hi')
+} // function expression
 
 
 // let add = function(a,b){
