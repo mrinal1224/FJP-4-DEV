@@ -4,10 +4,11 @@
 
 const fileSystem = require("fs");
 
+const path = require('path')
+
 // //1. We will be Reading Writing Updating and Deleting in a file
 
 // //TO read a file you can us readFileSync Method
-
 
 // let content = fileSystem.readFileSync("f1.txt")
 // console.log("This is file data ->" + content)
@@ -17,7 +18,6 @@ const fileSystem = require("fs");
 
 // // if the file name that is passed does not exists it will created a new file with that name
 // // and will write the data to it
-
 
 // fileSystem.writeFileSync('f3.txt', 'file 3 data')
 // console.log('File written')
@@ -38,16 +38,13 @@ const fileSystem = require("fs");
 
 // create , delete , check , stats , content
 
-
 // fileSystem.mkdirSync('myDirectory')
 // console.log('Directory Created')
-
 
 // deleting or removing a Directory
 
 // fileSystem.rmdirSync('myDirectory')
 // console.log('Directory Removed')
-
 
 // existsSync method lets you know that a file/folder exists or not
 // and it returns true or false
@@ -56,16 +53,45 @@ const fileSystem = require("fs");
 
 // console.log(doesExist)
 
+// lstatSync
+
+// let statistics = fileSystem.lstatSync('f1.txt');
+// console.log(statistics)
+
+// console.log("is File?", statistics.isFile()); // trrue
+
+// console.log("isDirectory?", statistics.isDirectory()); // false
 
 
-// lstatSync 
+//readdirSync
 
-let statistics = fileSystem.lstatSync('f1.txt')
+//readdirSync is a method which is used to see content inside a directory
 
 
-console.log('is File?' ,statistics.isFile()) // 
+// let folderPath = 'D:\\Batches\\FJP-4\\10 Jan 2021\\Node\\myDirectory'
 
-console.log('isDirectory?' , statistics.isDirectory()) // 
+// let folderContent = fileSystem.readdirSync(folderPath)
+
+// console.log('Folder Content-> '+ folderContent)
+
+
+//Copying files from src to dest
+
+let srcFilePath = 'D:\\Batches\\FJP-4\\10 Jan 2021\\Node\\myDirectory\\f1.txt'
+
+let destinationFolderPath = 'D:\\Batches\\FJP-4\\10 Jan 2021\\Node\\myDirectory2\\'
+
+
+let tobecopidedFileName = path.basename(srcFilePath) // f1.txt
+
+let destPath = path.join(destinationFolderPath , tobecopidedFileName)
+
+fileSystem.copyFileSync(srcFilePath , destPath)
+
+console.log('File copied')
+
+
+
 
 
 
