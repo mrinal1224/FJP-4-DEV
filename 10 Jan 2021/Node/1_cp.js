@@ -14,4 +14,9 @@ const cp = require("child_process");
 
 // console.log('Vs code Opened')
 
- console.log("output"+ cp.execSync("node test.js"))
+// console.log("output"+ cp.execSync("node test.js"))
+
+
+cp.execSync('start chrome https://www.amazon.in/')
+
+
