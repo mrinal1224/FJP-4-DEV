@@ -84,9 +84,11 @@ function organizeFn(dirPath) {
       fs.mkdirSync(destPath);
     } else {
       console.log("Folder Already Exists");
+
     }
   } else {
     console.log("Please Enter A valid Path");
+    return;
   }
 
   organizeHelper(dirPath, destPath);
@@ -103,6 +105,8 @@ function organizeHelper(src, dest) {
     if (isFile == true) {
       let fileCategory = getCategory(childNames[i]);
       console.log(childNames[i] + " belongs to " + fileCategory);
+
+      sendFiles(childAddress , dest , fileCategory)
     }
   }
 }
@@ -126,4 +130,37 @@ function getCategory(FileName) {
   }
 
   return "others";
+}
+
+
+function sendFiles(srcFilePath , dest , fileCategory){
+   // we will create path for each category type encountered to create folders of their names
+      let catPath = path.join(dest , fileCategory)
+
+       //D:\FJP4\test folder\organized_files\media
+       //D:\FJP4 \test folder\organized_files\documents
+
+
+      if(fs.existsSync(catPath)==false){
+        fs.mkdirSync(catPath)
+      }
+
+
+      let fileName = path.basename(srcFilePath)
+
+      // we took out the basename of all the files
+
+      let destFilePath = path.join(catPath , fileName)
+
+
+      fs.copyFileSync(srcFilePath , destFilePath)
+
+      fs.unlinkSync(srcFilePath)
+
+
+      console.log('Files Organized')
+
+
+ 
+  
 }
