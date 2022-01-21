@@ -10,13 +10,35 @@
 const fs = require("fs");
 
 const path = require("path");
-const { isGeneratorFunction } = require("util/types");
+
 
 let input = process.argv.slice(2);
 
 let inputArr = input; // [organzie , folderpath]
 
 let command = inputArr[0];
+
+
+let types = {
+  media: ["mp4", "mkv", "mp3"],
+  archives: ["zip", "7z", "rar", "tar", "gz", "ar", "iso", "xz"],
+  documents: [
+    "docx",
+    "doc",
+    "pdf",
+    "xlsx",
+    "xls",
+    "odt",
+    "ods",
+    "odp",
+    "odg",
+    "odf",
+    "txt",
+    "ps",
+    "tex",
+  ],
+  app: ["exe", "dmg", "pkg", "deb"],
+};
 
 switch (command) {
   case "tree":
@@ -54,7 +76,7 @@ function organizeFn(dirPath) { // we need a directory path as parameter
   // this doesExist will tell the Target Folder exists or not
 
   if (doesExist == true) {
-    destPath = path.join(dirPath, "organized_Files");
+    destPath = path.join(dirPath, "organized_Files"); // D:\Batches\FJP-4\testFolder\organized_files- we are ready to create folder her
 
     // we created a path for organized_Files Folder
 
@@ -83,10 +105,22 @@ function organizeHelper(src , dest){
          let isFile = fs.lstatSync(childAddress).isFile()
 
          if(isFile==true){
-           console.log(childAddress)
+           let fileCategory = getCategory(childNames[i])
          }
    }
 
 }
 
-//     D:\Batches\FJP-4\testFolder\organized_files- we are ready to create folder her
+
+function getCategory(FileName){
+     let ext = path.extname(FileName).slice(1)
+
+     console.log(ext)
+
+     
+}
+
+
+
+
+
