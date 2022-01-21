@@ -10,6 +10,7 @@
 const fs = require("fs");
 
 const path = require("path");
+const { isGeneratorFunction } = require("util/types");
 
 let input = process.argv.slice(2);
 
@@ -41,7 +42,7 @@ function helpFn() {
 }
 
 // Organize Function will organize all your target folder's files in a different folders acc to their extensions
-function organizeFn(dirPath) {
+function organizeFn(dirPath) { // we need a directory path as parameter 
   let destPath;
   if (dirPath == undefined) {
     console.log("Please enter a valid Directory Path");
@@ -66,6 +67,26 @@ function organizeFn(dirPath) {
   } else {
     console.log("Please Enter A valid Path");
   }
+
+  organizeHelper(dirPath , destPath)
+}
+
+
+
+
+function organizeHelper(src , dest){
+     let childNames = fs.readdirSync(src)
+     //console.log(childNames)
+
+   for(let i=0 ; i<childNames.length;i++){
+         let childAddress = path.join(src , childNames[i])
+         let isFile = fs.lstatSync(childAddress).isFile()
+
+         if(isFile==true){
+           console.log(childAddress)
+         }
+   }
+
 }
 
 //     D:\Batches\FJP-4\testFolder\organized_files- we are ready to create folder her
