@@ -11,13 +11,11 @@ const fs = require("fs");
 
 const path = require("path");
 
-
 let input = process.argv.slice(2);
 
 let inputArr = input; // [organzie , folderpath]
 
 let command = inputArr[0];
-
 
 let types = {
   media: ["mp4", "mkv", "mp3"],
@@ -64,7 +62,8 @@ function helpFn() {
 }
 
 // Organize Function will organize all your target folder's files in a different folders acc to their extensions
-function organizeFn(dirPath) { // we need a directory path as parameter 
+function organizeFn(dirPath) {
+  // we need a directory path as parameter
   let destPath;
   if (dirPath == undefined) {
     console.log("Please enter a valid Directory Path");
@@ -90,37 +89,41 @@ function organizeFn(dirPath) { // we need a directory path as parameter
     console.log("Please Enter A valid Path");
   }
 
-  organizeHelper(dirPath , destPath)
+  organizeHelper(dirPath, destPath);
 }
 
+function organizeHelper(src, dest) {
+  let childNames = fs.readdirSync(src);
+  //console.log(childNames)
 
+  for (let i = 0; i < childNames.length; i++) {
+    let childAddress = path.join(src, childNames[i]);
+    let isFile = fs.lstatSync(childAddress).isFile();
 
-
-function organizeHelper(src , dest){
-     let childNames = fs.readdirSync(src)
-     //console.log(childNames)
-
-   for(let i=0 ; i<childNames.length;i++){
-         let childAddress = path.join(src , childNames[i])
-         let isFile = fs.lstatSync(childAddress).isFile()
-
-         if(isFile==true){
-           let fileCategory = getCategory(childNames[i])
-         }
-   }
-
+    if (isFile == true) {
+      let fileCategory = getCategory(childNames[i]);
+      console.log(childNames[i] + " belongs to " + fileCategory);
+    }
+  }
 }
 
+function getCategory(FileName) {
+  let ext = path.extname(FileName).slice(1);
+  // we extraxcted extension names of the target Files
 
-function getCategory(FileName){
-     let ext = path.extname(FileName).slice(1)
+  //console.log(ext)
 
-     console.log(ext)
+  for (let key in types) {
+    let cTypeArr = types[key];
+    // we took out all the Category type Arrays here
+    //console.log(cTypeArr)
 
-     
+    for (let i = 0; i < cTypeArr.length; i++) {
+      if (ext == cTypeArr[i]) {
+        return key;
+      }
+    }
+  }
+
+  return "others";
 }
-
-
-
-
-

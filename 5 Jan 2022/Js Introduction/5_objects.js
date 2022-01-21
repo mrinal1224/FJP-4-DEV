@@ -57,9 +57,9 @@ cap.sayHi();
 
 // For in loop for objects
 
-// for(let key in cap){
-//        console.log('key:', key , "Value:" , cap[key])
-// }
+for(let key in cap){
+       console.log('key:', key , "Value:" , cap[key])
+}
 
 cap.isAvenger = false; // updating an object
 
