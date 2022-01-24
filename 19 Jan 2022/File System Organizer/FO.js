@@ -11,6 +11,7 @@ const fs = require("fs");
 
 const path = require("path");
 
+
 let input = process.argv.slice(2);
 
 let inputArr = input; // [organzie , folderpath]
@@ -39,8 +40,8 @@ let types = {
 };
 
 switch (command) {
-  case "tree":
-    console.log("Tree Implemented");
+  case 'tree':
+    treeFn(inputArr[1])
     break;
   case "organize":
     organizeFn(inputArr[1]);
@@ -84,7 +85,6 @@ function organizeFn(dirPath) {
       fs.mkdirSync(destPath);
     } else {
       console.log("Folder Already Exists");
-
     }
   } else {
     console.log("Please Enter A valid Path");
@@ -106,7 +106,7 @@ function organizeHelper(src, dest) {
       let fileCategory = getCategory(childNames[i]);
       console.log(childNames[i] + " belongs to " + fileCategory);
 
-      sendFiles(childAddress , dest , fileCategory)
+      sendFiles(childAddress, dest, fileCategory);
     }
   }
 }
@@ -129,38 +129,71 @@ function getCategory(FileName) {
     }
   }
 
-  return "others";
+  return "others"
+}
+
+function sendFiles(srcFilePath, dest, fileCategory) {
+  // we will create path for each category type encountered to create folders of their names
+  let catPath = path.join(dest, fileCategory)
+
+  //D:\FJP4\test folder\organized_files\media
+  //D:\FJP4 \test folder\organized_files\documents
+
+  if (fs.existsSync(catPath) == false) {
+    fs.mkdirSync(catPath)
+  }
+
+  let fileName = path.basename(srcFilePath)
+
+  // we took out the basename of all the files
+
+  let destFilePath = path.join(catPath, fileName)
+
+  fs.copyFileSync(srcFilePath, destFilePath)
+
+  fs.unlinkSync(srcFilePath);
+
+  console.log("Files Organized")
+
+
 }
 
 
-function sendFiles(srcFilePath , dest , fileCategory){
-   // we will create path for each category type encountered to create folders of their names
-      let catPath = path.join(dest , fileCategory)
 
-       //D:\FJP4\test folder\organized_files\media
-       //D:\FJP4 \test folder\organized_files\documents
+function treeFn(dirPath){
+    if(dirPath==undefined){
+      console.log('Please Enter a Valid Path')
+      return;
+    }
 
-
-      if(fs.existsSync(catPath)==false){
-        fs.mkdirSync(catPath)
+    else{
+      let doesExist = fs.existsSync(dirPath)
+      if(doesExist == true){
+        treeHelper(dirPath , ' ')
       }
-
-
-      let fileName = path.basename(srcFilePath)
-
-      // we took out the basename of all the files
-
-      let destFilePath = path.join(catPath , fileName)
-
-
-      fs.copyFileSync(srcFilePath , destFilePath)
-
-      fs.unlinkSync(srcFilePath)
-
-
-      console.log('Files Organized')
-
-
- 
-  
+    }
 }
+
+
+function treeHelper(targetPath , indent){
+     let isFile = fs.lstatSync(targetPath).isFile()
+     
+
+
+     if(isFile==true){
+         let fileName = path.basename(targetPath)
+         console.log(indent + "├── " + fileName)
+     }
+}
+
+
+
+
+
+
+
+
+
+
+
+
