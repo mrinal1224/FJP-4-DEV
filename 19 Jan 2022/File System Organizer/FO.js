@@ -11,8 +11,12 @@ const fs = require("fs");
 
 const path = require("path");
 
+const helpModule = require('../commands/help')
+
 
 let input = process.argv.slice(2);
+
+
 
 let inputArr = input; // [organzie , folderpath]
 
@@ -47,20 +51,14 @@ switch (command) {
     organizeFn(inputArr[1]);
     break;
   case "help":
-    helpFn();
+    helpModule.helpFnKey()
     break;
   default:
     console.log("Please enter a Valid command");
     break;
 }
 
-// Help Function will list all the ways by which you can run the commands of this project
-function helpFn() {
-  console.log(`List of all the commands->
-                                 1)Tree - node FO.js tree <dirPath>
-                                 2) organize - node FO.js organize <dirPath>
-                                 3)help - node FO.js help`);
-}
+
 
 // Organize Function will organize all your target folder's files in a different folders acc to their extensions
 function organizeFn(dirPath) {
