@@ -20,7 +20,7 @@ printFirstName("Gaurav", printLastName, printAge);
 // Calclulator create with call back function - addition ,sub , div, mul
 
 function calc(add, sub, mul, div) {
-  add(2, 3);  sub(4, 2);  mul(3, 3);  div(10, 5);
+  add(2, 3);  sub(4, 2);  mul(3, 3);  div(10, 5); add(2 , 4)
 }
 
 function addition(a, b) {
@@ -41,4 +41,10 @@ function division(a, b) {
 
 calc(addition, substraction, multiplication, division);
 
-// sub mul div
+
+
+
+
+
+
+
