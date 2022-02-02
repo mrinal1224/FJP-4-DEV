@@ -22,7 +22,7 @@ function cb (error, response, html) {
 function handleHTML(html){
        // in selTool we are basically getting the whole HTML in cheerio's format
        let selTool = cheerio.load(html)
-       //console.log(selTool)
+       console.log(selTool)
    
 
        let contentArr = selTool('.maincounter-number span')
