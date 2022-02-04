@@ -24,11 +24,49 @@ function extractLink(html){
    let link = anchorElem.attr('href')
 
 
-   let fullLink = 'https://www.espncricinfo.com/'+link
+   let fullLink = 'https://www.espncricinfo.com'+link
 
    console.log(fullLink)
 
 
+   getAllMatchLink(fullLink)
+
 }
+
+function getAllMatchLink(uri){
+       request(uri , function(error , resppnse , html){
+              if(error){
+                     console.log(error)
+              }
+              else{
+                     extractAllMatchLink(html)
+              } 
+       })
+
+ 
+}
+
+
+function extractAllMatchLink(html){
+     let $ = cheerio.load(html)
+
+
+     let scoreCardElemArr = $('a[data-hover="Scorecard"]')
+
+     for(let i=0 ; i<scoreCardElemArr.length ; i++){
+            let ScoreCardlink = $(scoreCardElemArr[i]).attr('href')
+
+            let fullLink = 'https://www.espncricinfo.com'+ScoreCardlink
+
+            console.log(fullLink)
+
+
+     }
+
+
+}
+
+
+
 
 
