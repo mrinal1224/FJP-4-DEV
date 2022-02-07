@@ -20,7 +20,7 @@ function extractMatchDetails(html){
        let $ = cheerio.load(html)
 
        let descElem = $('.header-info .description')
-       let result = $('.match-info.match-info-MATCH.match-info-MATCH-half-width .status-text span')
+       let result = $('.match-info.match-info-MATCH.match-info-MATCH-half-width .status-text span').text()
        //console.log(descElem.text())
 
        let descArr = descElem.text().split(',')
@@ -32,7 +32,7 @@ function extractMatchDetails(html){
       
        console.log(venue)
        console.log(date)
-       console.log(result.text())
+       console.log(result)
 
 
        console.log('`````````````````````````````````````')
@@ -44,9 +44,27 @@ function extractMatchDetails(html){
        for(let i=0 ; i<innings.length ; i++){
               htmlString += $(innings[i]).html()
 
+              let teamName = $(innings[i]).find('h5').text()
+              teamName = teamName.split('INNINGS')[0].trim()
+              
+              let opponentIndex = i==0 ? 1:0;
+              
+              let opponentName = $(innings[opponentIndex]).find('h5').text()
+              opponentName = opponentName.split('INNINGS')[0].trim()
+              
+
+
+              console.log(venue , date , teamName , opponentName , result)
+              
+
+              
+
+
+
+
        }
 
-       console.log(htmlString)
+       //console.log(htmlString)
 
 
 
