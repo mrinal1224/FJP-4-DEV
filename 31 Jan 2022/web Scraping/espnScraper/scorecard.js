@@ -20,6 +20,7 @@ function extractMatchDetails(html){
        let $ = cheerio.load(html)
 
        let descElem = $('.header-info .description')
+       let result = $('.match-info.match-info-MATCH.match-info-MATCH-half-width .status-text span')
        //console.log(descElem.text())
 
        let descArr = descElem.text().split(',')
@@ -28,10 +29,26 @@ function extractMatchDetails(html){
        let venue = descArr[1].trim()
        let date = descArr[2].trim()
 
-       let result = $('.match-info.match-info-MATCH.match-info-MATCH-half-width .status-text span')
+      
        console.log(venue)
        console.log(date)
        console.log(result.text())
+
+
+       console.log('`````````````````````````````````````')
+
+       let innings = $('.card.content-block.match-scorecard-table>.Collapsible')
+
+       let htmlString = ''
+
+       for(let i=0 ; i<innings.length ; i++){
+              htmlString += $(innings[i]).html()
+
+       }
+
+       console.log(htmlString)
+
+
 
 
        
