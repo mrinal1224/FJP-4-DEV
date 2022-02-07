@@ -51,10 +51,45 @@ function extractMatchDetails(html){
               
               let opponentName = $(innings[opponentIndex]).find('h5').text()
               opponentName = opponentName.split('INNINGS')[0].trim()
+
+              let cInning = $(innings[i])
+
+
+              let allRows = cInning.find('.table.batsman tbody tr')
+
+
+              for(let j=0 ; j<allRows.length ; j++){
+                        let allCols = $(allRows[j]).find('td')
+                        let isWorthy = $(allCols[0]).hasClass('batsman-cell')
+
+                        if(isWorthy == true){
+                             // Player Name runs balls   fours and sixes and STR
+
+                             let playerName = $(allCols[0]).text().trim()
+                             let runs = $(allCols[2]).text().trim()
+                             let balls = $(allCols[3]).text().trim()
+                             let fours = $(allCols[5]).text().trim()
+                             let sixes = $(allCols[6]).text().trim() 
+                             let STR = $(allCols[7]).text().trim()
+
+
+                             console.log(`${playerName} | ${runs} | ${balls} | ${fours} | ${sixes} | ${STR}`)
+
+                        }
+                        
+              } 
+
+              console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+
+
+
+
+
+
               
 
 
-              console.log(venue , date , teamName , opponentName , result)
+              //console.log(venue , date , teamName , opponentName , result)
               
 
               
