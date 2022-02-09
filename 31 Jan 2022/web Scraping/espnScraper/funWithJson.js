@@ -22,11 +22,11 @@ data2.push({
   },
 });
 
-console.log(data2);
+//console.log(data2);
 
 let stringData = JSON.stringify(data2);
 
-console.log(stringData);
+//console.log(stringData);
 
 fs.writeFileSync("./example.json", stringData);
 

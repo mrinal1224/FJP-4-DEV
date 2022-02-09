@@ -5,6 +5,15 @@ const cheerio = require("cheerio");
 
 const allMatchObj = require('./AllMatch')
 
+const path = require('path')
+
+const fs= require('fs')
+
+
+let iplPath = path.join(__dirname , "IPL")
+
+dirCreator(iplPath)
+
 
 
 request(url, cb);
@@ -29,6 +38,13 @@ function extractLink(html) {
   console.log(fullLink);
 
   allMatchObj.getAllMatch(fullLink)
+}
+
+
+function dirCreator(filePath){
+  if(fs.existsSync(filePath)==false){
+    fs.mkdirSync(filePath)
+  }
 }
 
 
