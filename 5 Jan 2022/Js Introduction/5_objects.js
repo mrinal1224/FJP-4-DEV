@@ -5,7 +5,7 @@
 let obj = {}; // this is how you declare an object
 
 let person = {
-  name: "Amit",
+   name: "Amit",
   age: 21,
   phone: 999999999,
   gender: "male",

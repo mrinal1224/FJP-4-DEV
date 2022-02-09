@@ -24,7 +24,7 @@ function getAllMatchLink(uri) {
      
          let fullLink = "https://www.espncricinfo.com" + ScoreCardlink;
      
-         console.log(fullLink);
+         //console.log(fullLink);
 
          scorecardObj.ps(fullLink)
 
