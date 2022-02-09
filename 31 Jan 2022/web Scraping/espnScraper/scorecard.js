@@ -3,6 +3,9 @@
 const cheerio = require("cheerio");
 const request = require("request");
 
+const path = require('path')
+const fs = require('fs')
+
 function processScoreCard(url) {
   request(url, cb);
 }
@@ -71,6 +74,8 @@ function extractMatchDetails(html) {
         console.log(
           `${playerName} | ${runs} | ${balls} | ${fours} | ${sixes} | ${STR}`
         );
+
+        processPlayer(teamName , playerName , runs , balls , fours , sixes , STR , opponentName , venue , result)
       }
     }
 
@@ -81,6 +86,23 @@ function extractMatchDetails(html) {
 
   //console.log(htmlString)
 }
+
+
+
+function processPlayer(teamName , playerName , runs , balls , fours , sixes , STR , opponentName , venue , result){
+       let teamPath = path.join(__dirname , "IPL" , teamName)
+       dirCreator(teamPath)
+}
+
+
+
+function dirCreator(filePath){
+  if(fs.existsSync(filePath)==false){
+    fs.mkdirSync(filePath)
+  }
+}
+
+
 
 
 module.exports ={

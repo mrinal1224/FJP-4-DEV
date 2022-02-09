@@ -12,6 +12,8 @@ const fs= require('fs')
 
 let iplPath = path.join(__dirname , "IPL")
 
+console.log(__dirname)
+
 dirCreator(iplPath)
 
 
