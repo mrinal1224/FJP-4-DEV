@@ -7,6 +7,8 @@ const fs = require("fs");
 
 //console.log(data)
 
+const xlsx = require('xlsx')
+
 let data2 = require("./example.json");
 
 data2.push({
@@ -32,6 +34,29 @@ fs.writeFileSync("./example.json", stringData);
 
 
 let newWB = xlsx.utils.book_new();
-let newWS = xlsx.utils.json_to_sheet(data);
-xlsx.utils.book_append_sheet(newWB, newWS,sheetName);
-xlsx.writeFile(newWB,fileName);
+// Add new WorkBook
+let newWS = xlsx.utils.json_to_sheet(data2);
+// This will take JSON and will convert into Excel Format
+xlsx.utils.book_append_sheet(newWB, newWS,'Avengers');
+xlsx.writeFile(newWB,"abc.xlsx");
+
+
+
+let wb = xlsx.readFile('abc.xlsx');
+// which excel file to read
+let excelData = wb.Sheets['Avengers'];
+// pass the sheet Name
+let ans = xlsx.utils.sheet_to_json(excelData);
+// conversion from sheet to JSON
+console.log(ans)
+
+
+
+
+
+
+
+
+
+
+
