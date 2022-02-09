@@ -1,4 +1,5 @@
 const fs = require("fs");
+const { fileURLToPath } = require("url");
 // let buffer = fs.readFileSync('./example.json') // Reading the JSON File
 
 // //console.log(buffer)
@@ -32,23 +33,27 @@ fs.writeFileSync("./example.json", stringData);
 
 
 
+function excelWriter(filePath , jsonData , sheetName){
+       let newWB = xlsx.utils.book_new();
+       // Add new WorkBook
+       let newWS = xlsx.utils.json_to_sheet(jsonData);
+       // This will take JSON and will convert into Excel Format
+       xlsx.utils.book_append_sheet(newWB, newWS,sheetName);
+       xlsx.writeFile(newWB,filePath);   
+}
 
-let newWB = xlsx.utils.book_new();
-// Add new WorkBook
-let newWS = xlsx.utils.json_to_sheet(data2);
-// This will take JSON and will convert into Excel Format
-xlsx.utils.book_append_sheet(newWB, newWS,'Avengers');
-xlsx.writeFile(newWB,"abc.xlsx");
 
+function excelReader(filePath , sheetName){
+       let wb = xlsx.readFile(filePath);
+       // which excel file to read
+       let excelData = wb.Sheets[sheetName];
+       // pass the sheet Name
+       let ans = xlsx.utils.sheet_to_json(excelData);
+       // conversion from sheet to JSON
+       console.log(ans)
+       
+}
 
-
-let wb = xlsx.readFile('abc.xlsx');
-// which excel file to read
-let excelData = wb.Sheets['Avengers'];
-// pass the sheet Name
-let ans = xlsx.utils.sheet_to_json(excelData);
-// conversion from sheet to JSON
-console.log(ans)
 
 
 
