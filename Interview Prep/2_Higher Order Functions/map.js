@@ -10,7 +10,7 @@
 // map is itself a function which is predefined in js
 //map takes a callback function as an Argumenet
 //map will call the callback function as many times as the elemets of the array
-//map will retur a new Array
+//map will retur a new Array and it wont disturb the original array
 
 // let arr=[2 ,4 , 5 , 8 , 9]
 
