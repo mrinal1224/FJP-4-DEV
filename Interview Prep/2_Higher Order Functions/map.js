@@ -17,7 +17,7 @@
 
 
 // let sqArr = arr.map(function(n){
-//        return n*n
+//        return n
 // })
 
 // console.log("Original Array", arr)
