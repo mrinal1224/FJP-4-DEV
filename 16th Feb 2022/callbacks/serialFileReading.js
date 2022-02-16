@@ -10,6 +10,7 @@ function cb1(err, data) {
   } else {
     console.log("File Data -> " + data); // f1 data
     fs.readFile("f2.txt", cb2);
+    
   }
 }
 
@@ -19,6 +20,7 @@ function cb2(err, data) {
   } else {
     console.log("File Data -> " + data); // f2 data
     fs.readFile("f3.txt", cb3);
+    
   }
 }
 
@@ -27,7 +29,7 @@ function cb3(err, data) {
     console.log(err);
   } else {
     console.log("File Data -> " + data); // f3 data
-    
+
   }
 }
 
