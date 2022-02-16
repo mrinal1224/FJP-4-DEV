@@ -12,8 +12,10 @@ function cb(data) {
   console.log("File Data ->" + data);
 }
 
+// These functions will go into microTask queue and will execute Randomly
 f1p.then(cb);
 f2p.then(cb);
 f3p.then(cb);
+
 
 console.log("After");
