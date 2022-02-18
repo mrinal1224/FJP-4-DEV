@@ -6,7 +6,7 @@ let f1p = fs.promises.readFile("f1.txt");
 
 function cb(data) {
   console.log("File Data-> " + data);
-  let f2p = fs.promises.readFile("f2.txt");
+  let f2p = fs.promises.readFile("f4.txt");
   return f2p
 }
 
