@@ -45,6 +45,23 @@ browserWillLaunchPromise
       { delay: 50 }
     );
     return loginButtonClickPromise;
+  }).then(function(){
+    let algoSecClickedPromise = waitAndClick('a[data-attr1="python"]' , page)
+    return algoSecClickedPromise
+  }).then(function(){
+    console.log('Algo Section Clicked')
   });
+
+
+
+  function waitAndClick(selector , cPage){
+    return new Promise(function(resolve , reject){
+      let waitForModalPromise = cPage.waitForSelector(selector)
+      waitForModalPromise.then(function(){
+        let clickModal = cPage.click(selector , {delay : 100})
+         return clickModal
+      }).then(function(){ resolve()}).catch(function(){reject()})
+    })
+  }
 
 console.log("After");
