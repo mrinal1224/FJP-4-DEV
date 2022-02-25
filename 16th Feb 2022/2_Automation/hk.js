@@ -87,7 +87,17 @@ function questionSolver(page , question , answer){
   return new Promise(function(resolve , reject){
     let questionWillbeClickedPromise = question.click()
     questionWillbeClickedPromise.then(function(){
-      console.log('Question is Clicked')
+      let waitForEditor = waitAndClick('.monaco-editor.no-user-select.vs' , page)
+      return waitForEditor
+    }).then(function(){
+      let customInputClicked =  waitAndClick('.checkbox-input' , page)
+      return customInputClicked
+    }).then(function(){
+       return waitAndClick('.input.text-area.custominput.auto-width' , page)
+    }).then(function(){
+       return page.type('.input.text-area.custominput.auto-width' , answer , {delay : 20})
+    }).then(function(){
+      
     })
   })
 
