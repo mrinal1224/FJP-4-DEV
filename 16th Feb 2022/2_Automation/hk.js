@@ -45,23 +45,36 @@ browserWillLaunchPromise
       { delay: 50 }
     );
     return loginButtonClickPromise;
+  })
+  .then(function () {
+    let algoSecClickedPromise = waitAndClick('a[data-attr1="algorithms"]', page);
+    return algoSecClickedPromise;
+  })
+  .then(function () {
+    let warmUpSectionClickedPromise = waitAndClick('input[value="warmup"]' , page)
+    return warmUpSectionClickedPromise;
   }).then(function(){
-    let algoSecClickedPromise = waitAndClick('a[data-attr1="python"]' , page)
-    return algoSecClickedPromise
-  }).then(function(){
-    console.log('Algo Section Clicked')
+      let allQuestionsArrPromise = page.$$('.ui-btn.ui-btn-normal.primary-cta.ui-btn-line-primary.ui-btn-styled')
+      return allQuestionsArrPromise;
+  }).then(function(TotalQuestions){
+    console.log('Number of Questions -> ' + TotalQuestions.length)
   });
 
-
-
-  function waitAndClick(selector , cPage){
-    return new Promise(function(resolve , reject){
-      let waitForModalPromise = cPage.waitForSelector(selector)
-      waitForModalPromise.then(function(){
-        let clickModal = cPage.click(selector , {delay : 100})
-         return clickModal
-      }).then(function(){ resolve()}).catch(function(){reject()})
-    })
-  }
+function waitAndClick(selector, cPage) {
+  return new Promise(function (resolve, reject) {
+    let waitForModalPromise = cPage.waitForSelector(selector);
+    waitForModalPromise
+      .then(function () {
+        let clickModal = cPage.click(selector, { delay: 100 });
+        return clickModal;
+      })
+      .then(function () {
+        resolve();
+      })
+      .catch(function () {
+        reject();
+      });
+  });
+}
 
 console.log("After");
