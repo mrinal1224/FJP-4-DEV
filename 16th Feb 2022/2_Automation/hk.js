@@ -109,7 +109,10 @@ function questionSolver(page , question , answer){
         let ctrlIsReleasedPromise = page.keyboard.up("Control")
         return ctrlIsReleasedPromise
     }).then(function(){
-        console.log('Ctrl is Released')
+          let waitForCodeAreaPromise = waitAndClick('.monaco-editor.no-user-select.vs' , page)
+          return waitForCodeAreaPromise
+    }).then(function(){
+           
     })
   })
 
