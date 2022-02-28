@@ -5,7 +5,7 @@ const codeFile = require('./code')
 
 console.log("Before");
 
-let email = "novovi8175@robhung.com";
+let email = "xikibid862@robhung.com";
 let password = "pepcoding123";
 
 let page;
@@ -97,7 +97,19 @@ function questionSolver(page , question , answer){
     }).then(function(){
        return page.type('.input.text-area.custominput.auto-width' , answer , {delay : 20})
     }).then(function(){
-      
+            let ctrlIsPressedPromise =  page.keyboard.down("Control")
+            return ctrlIsPressedPromise
+    }).then(function(){
+           let AisPressedPromise = page.keyboard.press("A" , {delay:100})
+           return AisPressedPromise
+    }).then(function(){
+            let XisPressedPromise = page.keyboard.press("X" , {delay:100})
+            return XisPressedPromise
+    }).then(function(){
+        let ctrlIsReleasedPromise = page.keyboard.up("Control")
+        return ctrlIsReleasedPromise
+    }).then(function(){
+        console.log('Ctrl is Released')
     })
   })
 
