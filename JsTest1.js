@@ -9,7 +9,7 @@
 //   console.log("Yay it's a string!");
 // }
 
-// A: It's not a string!
+// A: It's not a string! 
 // B: Yay it's a string!
 // C: TypeError
 // D: undefined
